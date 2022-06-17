@@ -8,7 +8,7 @@ struct ConversationView: View {
             ScrollView {
                 LazyVStack {
                     ForEach(0..<100) { _ in
-                        NavigationLink(destination: Text("Destination"), label: {
+                        NavigationLink(destination: ChatView(), label: {
                             ConversationCell()
                         })
                         
