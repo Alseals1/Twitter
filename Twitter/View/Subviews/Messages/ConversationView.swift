@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct FeedView: View {
+struct ConversationView: View {
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             
             ScrollView {
                 LazyVStack {
                     ForEach(0..<100) { _ in
-                        TweetCellView()
+                        ConversationCell()
                         
                     }
                 }
@@ -17,9 +17,9 @@ struct FeedView: View {
             Button(action: {
                 //
             }, label: {
-                Image("Tweet")
+                Image(systemName: "envelope")
                     .resizable()
-                    .renderingMode(.template)
+                    .scaledToFit()
                     .frame(width: 32, height: 32)
                     .padding()
             })
@@ -28,12 +28,11 @@ struct FeedView: View {
             .clipShape(Circle())
             .padding()
         }
-      
     }
 }
 
-struct FeedView_Previews: PreviewProvider {
+struct ConversationView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedView()
+        ConversationView()
     }
 }
