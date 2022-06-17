@@ -1,13 +1,16 @@
 import SwiftUI
 
 struct ConversationView: View {
+    @State var isShowingNewMessageView = false
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             
             ScrollView {
                 LazyVStack {
                     ForEach(0..<100) { _ in
-                        ConversationCell()
+                        NavigationLink(destination: Text("Destination"), label: {
+                            ConversationCell()
+                        })
                         
                     }
                 }
@@ -15,7 +18,7 @@ struct ConversationView: View {
             }
             
             Button(action: {
-                //
+                self.isShowingNewMessageView.toggle()
             }, label: {
                 Image(systemName: "envelope")
                     .resizable()
@@ -27,6 +30,9 @@ struct ConversationView: View {
             .background(Color.tweetButtonColor)
             .clipShape(Circle())
             .padding()
+            .sheet(isPresented: $isShowingNewMessageView, content: {
+                SearchView()
+            })
         }
     }
 }
